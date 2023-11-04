@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import IniciarSesion from './IniciarSesion';
 import Indice from './Indice';
 import { BrowserRouter } from 'react-router-dom';
 
