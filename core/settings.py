@@ -35,6 +35,8 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     'apps.estudiante',
     'apps.registro',
+    'apps.usuarios',
+    'apps.asignatura',
 
 ]
 
@@ -96,12 +98,7 @@ CSRF_COOKIE_SECURE = False
 
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "basededatos.sqlite3",
-    }
-}
+
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
@@ -109,8 +106,18 @@ DATABASES = {
         'USER': 'adminRuben',
         'PASSWORD': 'ruben',
         'HOST': '34.176.195.7',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        },
     }
 }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "basededatos.sqlite3",
+    }
+}
+DATABASE_CONNECTION_POOLING = False
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
@@ -175,7 +182,10 @@ ORS_ORIGIN_WHITELIST = env.list('CORS_ORIGIN_WHITELIST_DEV')
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS_DEV')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
+AUTHENTICATION_BACKENDS = [
+    'apps.usuarios.backend.UserAuthentificacionBackend',
+]
+AUTH_USER_MODEL = 'usuarios.UsuarioPersonalizado'
 if not DEBUG:
     ALLOWED_HOSTS=env.list('ALLOWED_HOSTS_DEPLOY')
     CORS_ORIGIN_WHITELIST=env.list('CORS_ORIGIN_WHITELIST_DEPLOY')
