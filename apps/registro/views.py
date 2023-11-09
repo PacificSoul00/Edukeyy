@@ -22,7 +22,10 @@ class listRegistrosView(APIView):
                 item = {}
                 item['cod_registro']=registro.cod_registro
                 item['uid']=registro.uid
-                item['fecha_registro']=registro.fecha_registro
+                item['fecha_registro']=registro.fecha_reg
+                item['estado_reg']=registro.estado_reg
+                item['rut']=registro.rut
+                item['cod_aula']=registro.cod_aula
                 result.append(item)
 
             return Response({'registros': result}, status=status.HTTP_200_OK)
@@ -38,7 +41,7 @@ class RegistroLongPollingView(View):
             # Consulta a la base de datos para obtener nuevos datos
             registros = DjangoRegistro.objects.all()
             if registros.exists():
-                data = list(registros.values('cod_registro', 'uid', 'fecha_registro'))
+                data = list(registros.values('cod_registro', 'uid', 'fecha_registro', 'estado_reg', 'rut', 'cod_aula'))
                 return JsonResponse({'registros': data})
 
             # Si ha pasado el tiempo máximo de espera, termina la solicitud

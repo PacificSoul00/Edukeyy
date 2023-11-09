@@ -17,3 +17,4 @@ class DjangoAsignaturaViewSet(viewsets.ModelViewSet):
         else:
             queryset = DjangoAsignatura.objects.all()
         return queryset
+             

@@ -32,7 +32,7 @@ function IniciarSesion() {
             username: username,
             password: password
         });
-        const response = await axios.post('http://134.122.112.248/api/usuarios/login/', {
+        const response = await axios.post('http://localhost:8000/api/usuarios/login/', {
             username: username,
             password: password
         });

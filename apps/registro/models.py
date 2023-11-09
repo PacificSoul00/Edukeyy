@@ -9,8 +9,12 @@ class DjangoRegistro(models.Model):
         verbose_name_plural='registros'
 
     cod_registro = models.AutoField(primary_key=True,unique=True,default=0)
-    uid = VarcharField()
-    fecha_registro = models.DateTimeField(default=None, null=True)
+    uid = VarcharField(max_length=8)
+    id_asignatura = models.IntegerField(max_length=10)
+    cod_aula = models.CharField(max_length=10)
+    rut = models.CharField(max_length=10)
+    fecha_reg = models.DateField(default=None, null=True)
+    estado_reg = models.BooleanField(default=False)
 
     def __str__(self):
         return self.uid
