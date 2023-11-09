@@ -5,12 +5,12 @@ class DjangoAsignatura(models.Model):
     class Meta:
         verbose_name='asignatura'
         verbose_name_plural='asignaturas'
-
-    id_asignatura = models.AutoField(primary_key=True)
-    nombre_asignatura = models.CharField(max_length=50)
-    rut_profesor = models.CharField(max_length=50)
+        
+    id = models.BigAutoField(primary_key=True)
+    sigla_asignatura = models.CharField(max_length=10)
+    nom_asignatura = models.CharField(max_length=100)
+    seccion = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.nombre_asignatura
-    
+        return self.nom_asignatura
     

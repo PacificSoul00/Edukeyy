@@ -106,17 +106,14 @@ DATABASES = {
         'USER': 'adminRuben',
         'PASSWORD': 'ruben',
         'HOST': '34.176.195.7',
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-        },
     }
 }
-DATABASES = {
+"""DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": "basededatos.sqlite3",
     }
-}
+}"""
 DATABASE_CONNECTION_POOLING = False
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
@@ -180,7 +177,7 @@ REST_FRAMEWORK = {
 ORS_ORIGIN_WHITELIST = env.list('CORS_ORIGIN_WHITELIST_DEV')
 
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS_DEV')
-
+CORS_ALLOW_ALL_ORIGINS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 AUTHENTICATION_BACKENDS = [
     'apps.usuarios.backend.UserAuthentificacionBackend',

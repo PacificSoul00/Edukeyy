@@ -11,9 +11,9 @@ class DjangoAsignaturaViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):
-        rut_profesor = self.request.query_params.get('rut_profesor', None)
-        if rut_profesor is not None:
-            queryset = DjangoAsignatura.objects.filter(rut_profesor=rut_profesor)
+        sigla_asignatura = self.request.query_params.get('sigla_asignatura', None)
+        if sigla_asignatura is not None:
+            queryset = DjangoAsignatura.objects.filter(sigla_asignatura=sigla_asignatura)
         else:
             queryset = DjangoAsignatura.objects.all()
         return queryset
