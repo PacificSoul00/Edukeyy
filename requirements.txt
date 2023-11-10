@@ -8,3 +8,4 @@ django-ckeditor==6.7.0
 pyscopg2==66.0.2
 whitenoise==6.5.0
 django-mssql==1.8
+agon2-cffi==23.1.0

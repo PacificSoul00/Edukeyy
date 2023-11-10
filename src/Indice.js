@@ -14,7 +14,7 @@ function Indice(){
                 <Route path="/" element={<IniciarSesion/>}/>
                 <Route path="/iniciar-sesion" element={<IniciarSesion/>}/>
                 <Route path="/docente/inicio" element={<InicioDocente/>}/>
-                <Route path="/docente/asignaturas" element={<DocenteAsignaturas/>}/>
+                <Route path="/docente/asignaturas/:sigla" element={<DocenteAsignaturas/>}/>
                 <Route path="/director-carrera/asignatura" element={<SolicitudesDirector/>}/>
                 <Route path="/director-carrera/inicio" element={<InicioDirector/>}/>
                 <Route path="/director-carrera/visualizar-asistencia" element={<VisualizarAsistenciaDirector/>}/>

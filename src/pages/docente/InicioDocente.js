@@ -4,6 +4,7 @@ import HeaderDocente from './components/HeaderDocente';
 import '../../IniciarSesion.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 function InicioDocente(){
     const location = useLocation();
     const shouldLoadCss = location.pathname === '/docente/inicio';
@@ -24,7 +25,7 @@ function InicioDocente(){
         const rut_profesor = localStorage.getItem('rut');
 
         // Realiza una solicitud GET a tu API
-        axios.get(`http://localhost:8000/api/docente-asignatura/?rut=${rut_profesor}`)
+        axios.get(`http://134.122.112.248/api/docente-asignatura/?rut=${rut_profesor}`)
             .then(response => {
                 // Guarda los datos de la respuesta en el estado
                 setAsignaturas(response.data);
@@ -37,7 +38,7 @@ function InicioDocente(){
     const [asignaturasCompletas, setAsignaturasCompletas] = useState([]);
   useEffect(() => {
     // Obtener la información completa de las asignaturas desde la segunda API
-    axios.get('http://localhost:8000/api/asignaturas/')
+    axios.get('http://134.122.112.248/api/asignaturas/')
       .then(response => {
         // Crear un mapa para buscar fácilmente las asignaturas por sigla
         const asignaturasMap = new Map(response.data.map(asignatura => [asignatura.sigla_asignatura, asignatura]));
@@ -63,7 +64,7 @@ function InicioDocente(){
             <div className="contenedor-docente">
                 {asignaturasCompletas.map(asignatura => (
                     <div className="asignatura">
-                     <Link to={`/asignatura/${asignatura.sigla_asignatura}`} key={asignatura.id}>
+                     <Link to={`/docente/asignaturas/${asignatura.sigla_asignatura}`} key={asignatura.id}>
                         <h3 className="texto-asignatura">{asignatura.sigla_asignatura} - {asignatura.nom_asignatura}</h3>
                     </Link>
 

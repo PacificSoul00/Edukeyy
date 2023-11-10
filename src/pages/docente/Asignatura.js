@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import HeaderDocente from './components/HeaderDocente';
 import '../../IniciarSesion.css';
 import axios from 'axios';
@@ -8,6 +8,8 @@ function Asignatura (){
     const location = useLocation();
     const shouldLoadCss = location.pathname === '/docente/asignaturas';
     const [bodyClass, setBodyClass] = useState('body-docente');
+    const { sigla } = useParams();
+    const [asignaturas, setAsignaturas] = useState([]);
     useEffect(() => {
         // Carga el CSS solo si shouldLoadCss es true
         if (shouldLoadCss) {
@@ -18,6 +20,25 @@ function Asignatura (){
           ;
         }
       });
+      useEffect(() => {
+        console.log('Valor de sigla:', sigla);
+        // Resto del código...
+    }, [sigla]);
+    useEffect(() => {
+      // Asume que rut_profesor está almacenado en localStorage
+      const rut_profesor = localStorage.getItem('rut');
+
+      // Realiza una solicitud GET a tu API
+      axios.get(`http://134.122.112.248/api/docente-asignatura/?rut=${rut_profesor}`)
+          .then(response => {
+              // Guarda los datos de la respuesta en el estado
+              setAsignaturas(response.data);
+          })
+          .catch(error => {
+              console.error('Hubo un error al obtener las asignaturas:', error);
+          });
+  }, []);
+  
 return(
 
     <div>
@@ -25,30 +46,14 @@ return(
         <div class="contenedor-asignatura">
         <div class="contenedor-asignatura-left">
             <div class="bloque-asignatura">
+              <h2>Secciones</h2>
+            {asignaturas.map(asignatura => (
                 <div class="card tarjeta">
                     <div class="card-body">
-                      <h5 class="card-title">001D</h5>
-                      <p class="card-text">LUN - MIE</p>
+                      <h5 class="card-title">{asignatura.seccion}</h5>
                     </div>
                   </div>
-                  <div class="card tarjeta">
-                    <div class="card-body">
-                      <h5 class="card-title ">002D</h5>
-                      <p class="card-text">LUN - MIE</p>
-                    </div>
-                  </div>
-                  <div class="card tarjeta">
-                    <div class="card-body">
-                      <h5 class="card-title ">003D</h5>
-                      <p class="card-text">LUN - MIE</p>
-                    </div>
-                  </div>
-                  <div class="card tarjeta">
-                    <div class="card-body">
-                      <h5 class="card-title">004D</h5>
-                      <p class="card-text">LUN - MIE</p>
-                    </div>
-                  </div>
+                  ))}
             </div>
         </div>
         <div class="contenedor-asignatura-right">
@@ -63,12 +68,16 @@ return(
                     <thead>
                         <tr>
                             <th scope="col">UID - Tarjeta</th>
-                            <th scope="col">Fecha de Registro</th>
                             <th scope="col">Nombre del Alumno</th>
+                            <th scope="col">Nombre asignatura</th>
+                            <th scope="col">Fecha Registro</th>
+                            <th scope="col">Estado alumno</th>
                         </tr>
                     </thead>
                     <tbody>
                           <tr>
+                          <td>Ejemplo</td>
+                          <td>Ejemplo</td>
                           <td>Ejemplo</td>
                           <td>Ejemplo</td>
                           <td>Ejemplo</td>
