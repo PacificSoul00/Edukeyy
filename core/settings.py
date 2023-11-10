@@ -39,6 +39,7 @@ PROJECT_APPS = [
     'apps.asignatura',
     'apps.aula',
     'apps.docente_asignatura',
+    'apps.registro_estudiante',
 
 ]
 
@@ -101,7 +102,7 @@ CSRF_COOKIE_SECURE = False
 
 
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'mssql',
         'NAME': 'edu-key-db',
@@ -109,13 +110,13 @@ DATABASES = {
         'PASSWORD': 'ruben',
         'HOST': '34.176.195.7',
     }
-}
-"""DATABASES = {
+}"""
+DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": "basededatos.sqlite3",
     }
-}"""
+}
 DATABASE_CONNECTION_POOLING = False
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",

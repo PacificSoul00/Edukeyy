@@ -13,7 +13,7 @@ class DjangoRegistro(models.Model):
     ##id_asignatura = models.IntegerField(max_length=10)
     ##cod_aula = models.CharField(max_length=10)
     ##rut = models.CharField(max_length=10)
-    fecha_reg = models.DateField(default=None, null=True)
+    fecha_reg = models.DateTimeField(default=None, null=True)
     ##estado_reg = models.BooleanField(default=False)
 
     def __str__(self):
