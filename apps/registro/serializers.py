@@ -8,4 +8,8 @@ class RegistroSerializers(serializers.ModelSerializer):
             'cod_registro',
             'uid',
             'fecha_registro',
+            'cod_aula',
+            'rut',
+            'fecha_reg',
+            'estado_reg',
         ]

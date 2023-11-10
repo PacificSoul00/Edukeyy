@@ -18,3 +18,4 @@ class DjangoDocenteAsignaturaView(viewsets.ModelViewSet):
         else:
             queryset = DocenteAsignatura.objects.all()
         return queryset
+        

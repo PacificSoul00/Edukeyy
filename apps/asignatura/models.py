@@ -6,7 +6,7 @@ class DjangoAsignatura(models.Model):
         verbose_name='asignatura'
         verbose_name_plural='asignaturas'
         
-    id = models.BigAutoField(primary_key=True)
+    id = models.BigAutoField(primary_key=True) ### Id autoincremental
     sigla_asignatura = models.CharField(max_length=10)
     nom_asignatura = models.CharField(max_length=100)
     seccion = models.CharField(max_length=10)

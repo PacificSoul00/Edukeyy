@@ -24,7 +24,7 @@ function InicioDocente(){
         const rut_profesor = localStorage.getItem('rut');
 
         // Realiza una solicitud GET a tu API
-        axios.get(`http://localhost:8000/api/asignaturas/?rut_profesor=${rut_profesor}`)
+        axios.get(`http://localhost:8000/api/docente-asignatura/?rut=${rut_profesor}`)
             .then(response => {
                 // Guarda los datos de la respuesta en el estado
                 setAsignaturas(response.data);
@@ -33,14 +33,40 @@ function InicioDocente(){
                 console.error('Hubo un error al obtener las asignaturas:', error);
             });
     }, []);
+    
+    const [asignaturasCompletas, setAsignaturasCompletas] = useState([]);
+  useEffect(() => {
+    // Obtener la información completa de las asignaturas desde la segunda API
+    axios.get('http://localhost:8000/api/asignaturas/')
+      .then(response => {
+        // Crear un mapa para buscar fácilmente las asignaturas por sigla
+        const asignaturasMap = new Map(response.data.map(asignatura => [asignatura.sigla_asignatura, asignatura]));
+
+        // Combinar la información de ambas APIs
+        const asignaturasConNombre = asignaturas.map(asignatura => ({
+          ...asignatura,
+          nom_asignatura: asignaturasMap.get(asignatura.sigla_asignatura)?.nom_asignatura || 'Nombre no encontrado',
+        }));
+
+        // Actualizar el estado con las asignaturas completas
+        setAsignaturasCompletas(asignaturasConNombre);
+      })
+      .catch(error => {
+        console.error('Hubo un error al obtener la información completa de las asignaturas:', error);
+      });
+  }, [asignaturas]);
+    console.log(asignaturas);
     return(
         <div>
             <HeaderDocente/>
             <h3 class="texto-docente">Seleccione la asignatura la cual desea consultar</h3>
             <div className="contenedor-docente">
-                {asignaturas.map(asignatura => (
-                    <div key={asignatura.id_asignatura} className="asignatura">
-                        <h3 className="texto-asignatura">{asignatura.nombre_asignatura}</h3>
+                {asignaturasCompletas.map(asignatura => (
+                    <div className="asignatura">
+                     <Link to={`/asignatura/${asignatura.sigla_asignatura}`} key={asignatura.id}>
+                        <h3 className="texto-asignatura">{asignatura.sigla_asignatura} - {asignatura.nom_asignatura}</h3>
+                    </Link>
+
                     </div>
                 ))}
             </div>

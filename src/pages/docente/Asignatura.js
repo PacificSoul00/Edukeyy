@@ -5,11 +5,9 @@ import '../../IniciarSesion.css';
 import axios from 'axios';
 
 function Asignatura (){
-    const [registros, setRegistro] = useState([]);
     const location = useLocation();
     const shouldLoadCss = location.pathname === '/docente/asignaturas';
     const [bodyClass, setBodyClass] = useState('body-docente');
-    const nombre = "";
     useEffect(() => {
         // Carga el CSS solo si shouldLoadCss es true
         if (shouldLoadCss) {
@@ -20,42 +18,6 @@ function Asignatura (){
           ;
         }
       });
-      const getRegistro = async () => {
-        try {
-            const respuesta = await axios.get('http://localhost:8000/api/registro/');
-            if (Array.isArray(respuesta.data.registros)) {
-                const registrosConNombres = await Promise.all(respuesta.data.registros.map(async (registro) => {
-                    try {
-                        const respuestaEstudiante = await axios.get(`http://localhost:8000/api/estudiante/?uid=${registro.uid}`);
-                        let respuestaEstudianteData = respuestaEstudiante.data.estudiantes[0];
-                        console.log(respuestaEstudianteData.nom_al);
-                        return {...registro, nom_al: respuestaEstudianteData.nom_al};
-                    } catch (error) {
-                        console.error('Error al obtener el nombre del estudiante:', error);
-                        return {...registro, nom_al: 'Desconocido'};
-                    }
-                }));
-                setRegistro(registrosConNombres);
-                console.log(registrosConNombres);
-            } else {
-                console.error('Los datos de estudiantes no son un arreglo:', respuesta.data);
-            }
-        } catch (error) {
-            if (error.response && error.response.status === 408) {
-                console.log('Tiempo de espera agotado, intentando nuevamente...');
-            } else {
-                console.error('Error al obtener estudiantes:', error);
-            }
-        }
-    };
-    
-    useEffect(() => {
-      const intervalId = setInterval(() => {
-          getRegistro();
-      }, 10000)});
-
-    console.log(registros)
-
 return(
 
     <div>
@@ -106,13 +68,11 @@ return(
                         </tr>
                     </thead>
                     <tbody>
-                      {registros.map((registro,i) => (
-                        <tr key={registro.id}>
-                          <td>{registro.uid}</td>
-                          <td>{registro.fecha_registro}</td>
-                          <td>{registro.nom_al}</td>
+                          <tr>
+                          <td>Ejemplo</td>
+                          <td>Ejemplo</td>
+                          <td>Ejemplo</td>
                         </tr>
-                      ))}
                     </tbody>
                 </table>
             </div>
