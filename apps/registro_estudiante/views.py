@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.views import View
 import time
 # Create your views here.
-class listRegistrosView(APIView):
+class listRegistrosEstudiantesView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def get(self,request, format=None):
