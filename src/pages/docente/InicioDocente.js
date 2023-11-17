@@ -23,16 +23,23 @@ function InicioDocente(){
       useEffect(() => {
         // Asume que rut_profesor está almacenado en localStorage
         const rut_profesor = localStorage.getItem('rut');
-
+    
         // Realiza una solicitud GET a tu API
-        axios.get(`http://134.122.112.248/api/docente-asignatura/?rut=${rut_profesor}`)
-            .then(response => {
-                // Guarda los datos de la respuesta en el estado
-                setAsignaturas(response.data);
-            })
-            .catch(error => {
-                console.error('Hubo un error al obtener las asignaturas:', error);
-            });
+          axios.get(`http://134.122.112.248/api/docente-asignatura/?rut=${rut_profesor}`)
+          .then(response => {
+              // Filtra las asignaturas para eliminar las duplicadas
+              const asignaturasUnicas = response.data.registros_docente_asignaturas.filter((asignatura, index, self) =>
+                  index === self.findIndex((a) => (
+                      a.sigla_asignatura === asignatura.sigla_asignatura
+                  ))
+              );
+      
+              // Guarda los datos de la respuesta en el estado
+              setAsignaturas(asignaturasUnicas);
+          })
+          .catch(error => {
+              console.error('Hubo un error al obtener las asignaturas:', error);
+          });
     }, []);
     
     const [asignaturasCompletas, setAsignaturasCompletas] = useState([]);

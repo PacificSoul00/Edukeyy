@@ -10,11 +10,6 @@
 }
 
 
-.body-login{
-  font-family: 'Raleway', sans-serif !important;
-  background: rgb(2,0,36) !important;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(100,9,121,1) 35%, rgba(155,0,255,1) 100%) !important;
-}
 .texto-bienvenida{
   width: 100%;
   display:flex;
@@ -79,7 +74,7 @@
 
 
 
-.body-docente{
+body{
   font-family: 'Raleway', sans-serif !important;
   position: relative;
   margin: var(--header-height) 0 0 0;
@@ -407,4 +402,56 @@ span{
 }
 .tabla-asignatura{
   border-radius: 10rem !important;
+}
+.buscador{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.buscadorsito{
+  width: 70%;
+}
+.botonsito{
+  height: 5vh;
+}
+.formulario-input-solicitud{
+  width:50%;
+}
+.texto-solicitud-estudiante{
+  color:white;
+}
+.titulo-solicitud-docente{
+  text-align:center;
+}
+.contenedor-solicitud-docente{
+  width:100%;
+}
+.formulario-solicitud-docente{
+  width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.formulario-solicitud-docente-input{
+  width:45vw;
+}
+.textito{
+  color:white;
+}
+.solicitud-secretario{
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: flex-start;
+  margin-left: 25%;
+  margin-top: 7%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 1rem;
+}
+.botonenviar{
+  width: 48vw;
 }

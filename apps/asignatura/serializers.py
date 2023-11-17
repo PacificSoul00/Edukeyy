@@ -5,6 +5,7 @@ class AsignaturaSerializer(serializers.ModelSerializer):
     class Meta:
         model=DjangoAsignatura
         fields=[
+            'id',
             'sigla_asignatura',
             'nom_asignatura',
             'seccion',

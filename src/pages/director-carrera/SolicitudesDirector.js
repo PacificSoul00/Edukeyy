@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../../IniciarSesion.css';
 import NavBarDirector from './components/NavBarDirector';
+import { Link } from 'react-router-dom';
 
 function SolicitudesDirector(){
     const location = useLocation();
-    const shouldLoadCss = location.pathname === '/director-carrera/mantenedor-estudiante';
+    const shouldLoadCss = location.pathname === '/secretario/mantenedor-estudiante';
     const [bodyClass, setBodyClass] = useState('body-pd height-100');
     
     useEffect(() => {
@@ -49,7 +50,7 @@ function SolicitudesDirector(){
                     <th>Rocio Bustos</th>
                     <th>Lorem ipsum dolor sit...</th>
                     <th>Pendiente</th>
-                    <th><a href="ver-mas-solicitud.html"><button type="button" class="btn btn-warning">Modificar estado</button></a></th>
+                    <th><Link to={`/secretario/solocitud/`}><button type="button" class="btn btn-warning">Modificar estado</button></Link></th>
                 </tr>
             </tbody>
         </table>

@@ -40,6 +40,7 @@ PROJECT_APPS = [
     'apps.aula',
     'apps.docente_asignatura',
     'apps.registro_estudiante',
+    'apps.solicitud'
 
 ]
 

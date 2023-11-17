@@ -5,24 +5,6 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 function IniciarSesion() {
-    const location = useLocation();
-    const shouldLoadCss = location.pathname === '/iniciar-sesion';
-    const [bodyClass, setBodyClass] = useState('body-login');
-    useEffect(() => {
-        // Carga el CSS solo si shouldLoadCss es true
-        if (shouldLoadCss) {
-          import('./IniciarSesion.css').then((module) => {
-            setBodyClass('body-login');
-            document.body.className=bodyClass;
-            
-            // Aquí puedes hacer algo adicional después de cargar el CSS
-            console.log('CSS cargado');
-          });
-        }else{
-            setBodyClass('body-login');
-            document.body.className=bodyClass;
-        }
-      });
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -52,9 +34,9 @@ function IniciarSesion() {
         } else if (rol == 2) {
             // Redirige al docente a su página
             navigate('/docente/inicio');
-        } else if (rol == 3) {
+        } else if (rol == 4) {
             // Redirige al director de carrera a su página
-            navigate('/director');
+            navigate('/secretario/inicio');
         }
     };
     

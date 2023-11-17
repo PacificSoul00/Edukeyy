@@ -5,7 +5,7 @@ import NavBarDirector from './components/NavBarDirector';
 
 function MantenedorEstudiante(){
     const location = useLocation();
-    const shouldLoadCss = location.pathname === '/director-carrera/mantenedor-estudiante';
+    const shouldLoadCss = location.pathname === '/secretario/mantenedor-estudiante';
     const [bodyClass, setBodyClass] = useState('body-pd height-100');
     
     useEffect(() => {

@@ -1,10 +1,6 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-from .views import DjangoAsignaturaViewSet
-
-router = DefaultRouter()
-router.register(r'', DjangoAsignaturaViewSet, basename='asignaturas')
+from django.urls import path
+from .views import DjangoAsignaturaAPIView
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', DjangoAsignaturaAPIView.as_view(), name='asignaturas'),
 ]

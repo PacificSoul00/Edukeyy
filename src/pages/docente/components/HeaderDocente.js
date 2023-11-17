@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LogoDuoc from '../../../media/logo/DuocUC.png';
 import LogoEdukey from '../../../media/logo/Edukey.png';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function HeaderDocente(){
     const p_nombre = localStorage.getItem('p_nombre');
     const s_nombre = localStorage.getItem('s_nombre');
@@ -28,8 +29,10 @@ function HeaderDocente(){
         <div>
             <header className="header-docente">
                 <div className="header-pro">
+                    <Link to={'/docente/inicio'}>
                     <img className="logo" src={LogoEdukey} alt="" width="200px"></img>
-                    <h1 className="titulo-docente">Bienvenido docente {p_nombre} {s_nombre}</h1>
+                    </Link>
+                    <h1 className="titulo-docente">Bienvenid@ {p_nombre} {s_nombre}</h1>
                     <img className="logo-duoc" src={LogoDuoc} alt="" width="400px" height="100px"></img>
                 </div>
                 <div className="docente-cerrar">

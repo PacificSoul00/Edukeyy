@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../../IniciarSesion.css';
 import NavBarDirector from './components/NavBarDirector';
+import { useNavigate } from 'react-router-dom';
 
 function VisualizarAsistenciaDirector(){
     const location = useLocation();
-    const shouldLoadCss = location.pathname === '/director-carrera/visualizar-asistencia';
+    const shouldLoadCss = location.pathname === '/secretario/visualizar-asistencia';
     const [bodyClass, setBodyClass] = useState('body-pd height-100');
     
     useEffect(() => {

@@ -5,6 +5,7 @@ class Rol(models.TextChoices):
     ADMINISTRADOR = '1', 'Administrador'
     DOCENTE = '2', 'Docente'
     DIRECTOR_DE_CARRERA = '3', 'Director de Carrera'
+    SECRETARIO = '4', 'Secretario'
 
 class UsuarioPersonalizado(AbstractUser):
     rut = models.CharField(max_length=10, unique=True)
